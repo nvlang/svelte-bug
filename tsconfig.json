@@ -1,15 +1,37 @@
 {
-	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
-		"allowJs": true,
-		"checkJs": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"sourceMap": true,
-		"strict": true,
+		"target": "ESNext",
 		"module": "NodeNext",
-		"moduleResolution": "NodeNext"
-	}
+		"lib": ["ESNext"],
+		"moduleResolution": "NodeNext",
+		"esModuleInterop": true,
+		"declaration": true,
+		"declarationMap": true,
+		"resolveJsonModule": true,
+
+		"rootDir": ".",
+		"outDir": "dist",
+		"importHelpers": true,
+
+		"strict": true,
+		"allowSyntheticDefaultImports": true,
+		"exactOptionalPropertyTypes": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noUncheckedIndexedAccess": true,
+
+		"allowUnreachableCode": false,
+		"allowUnusedLabels": false,
+		"forceConsistentCasingInFileNames": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+
+		"sourceMap": true,
+
+		"skipLibCheck": true
+	},
+	"include": ["**/*.ts", "**/*.js"],
+	"exclude": ["node_modules", "dist"]
 }

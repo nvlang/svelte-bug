@@ -1,58 +1,32 @@
-# create-svelte
+# Svelte compiler types issue
 
-Everything you need to build a Svelte library, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+## Steps to reproduce
 
-Read more about creating a library [in the docs](https://kit.svelte.dev/docs/packaging).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+```sh
+pnpm i && tsc
 ```
 
-## Developing
+## Expected behavior
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Error-free compilation.
 
-```bash
-npm run dev
+## Actual behavior
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+`tsc` prints the following to the terminal:
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+```plain
+index.ts:5:6 - error TS2345: Argument of type 'TemplateNode' is not assignable to parameter of type 'Node'.
+  Type 'Text' is not assignable to type 'Node'.
+    Type 'Text' is missing the following properties from type 'Property': key, value, kind, method, and 2 more.
 
-## Building
+5 walk(ast.html, {
+       ~~~~~~~~
 
-To build your library:
+index.ts:7:7 - error TS2367: This comparison appears to be unintentional because the types '"CatchClause" | "ClassBody" | "Identifier" | "Literal" | "MethodDefinition" | "PrivateIdentifier" | "Program" | "Property" | "PropertyDefinition" | "SpreadElement" | "Super" | ... 59 more ... | "VariableDeclaration"' and '"Text"' have no overlap.
 
-```bash
-npm run package
-```
+7   if (node.type === 'Text') {
+        ~~~~~~~~~~~~~~~~~~~~
 
-To create a production version of your showcase app:
 
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
-
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
-
-```bash
-npm publish
+Found 2 errors in the same file, starting at: index.ts:5
 ```
